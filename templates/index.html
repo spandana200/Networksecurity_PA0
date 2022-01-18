@@ -1,0 +1,68 @@
+{% block content %}
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Roboto+Condensed:400,700" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/static/style.css">
+	<script type = "text/javascript" src="/static/jquery-3.6.0.js"></script>
+	<title>PA_0_Eshwitha</title>
+</head>
+<body>
+
+<div id="main">
+	<div class="content">
+		<div class="main-para">
+			<h1 class="title">Welcome!</h1>
+			<p>Here is what you can try out:
+				<h2 class="subtitle">Encryption</h2> 
+				<ul>
+					<li>Type in your message or the plaintext into the box on the left.</li>
+					<li>Click on the Encrypt button</li>
+					<li>You see the corresponding ciphertext obtained using the Atbash cipher encryption algorithm, in the right box!</li>
+				</ul>
+				<h2 class="subtitle">Decryption</h2>
+				<ul>
+					<li>Type in the ciphertext into the box on the right.</li>
+					<li>Click on the Decrypt button</li>
+					<li>You see the corresponding plaintext message obtained using the Atbash cipher decryption algorithm, in the left box!</li>
+				</ul>	
+			</p>
+		</div>
+		<div id="input-output">
+			<div id="encrypt">
+				<form action = "encrypt" method = "post">
+					{% csrf_token %}
+					<textarea name = "plain_text" type="text" placeholder="Plain Text" id="plaintext"></textarea>
+					<button type="submit" class="submit-button">Encrypt</button>
+				</form>
+				<script>
+					let outputp = '{{plaintext}}';
+					$("#plaintext").val(outputp);
+				</script>
+			</div>
+			<div id="decrypt">
+				<form action = "decrypt" method = "post">
+					{% csrf_token %}
+					<textarea name = "cipher_text" type="text" placeholder="Cipher Text" id="ciphertext"></textarea>
+					<button type="submit" class="submit-button">Decrypt</button>
+				</form>
+				<script>
+					let outputc = '{{ciphertext}}';
+					$("#ciphertext").val(outputc);
+				</script>
+			</div>				
+		</div>
+	</div>
+
+	<div class="sidebar">
+		<img src="/static/img-1.jpg" id="image-1">
+	</div>
+
+	<div>
+		<h2 class="particulars">PA_0, Network Security</h2>
+		<h3 class="particulars">Palakur Eshwitha Sai, 18123014, Mathematics and Computing (Part III)</h3> 
+	</div>
+</div>
+
+</body>
+</html>
+{% endblock %}
